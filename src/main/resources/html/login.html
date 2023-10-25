@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f2f5;
+        }
+
+        #login-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+
+        button {
+            background-color: #0078d4;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005a9e;
+        }
+
+        #submit{
+            width: 100%;
+        }
+
+
+        #token-section{
+            display: none;
+        }
+
+        #toggle-button{
+            background-color: grey;
+        }
+
+        #toggle-server-button{
+            background-color: grey;
+        }
+
+        #InputContainerID{
+            margin-right: 17px;
+        }
+
+
+        #InputContainerToken{
+            margin-right: 17px;
+        }
+
+        #InputContainerCustomURL{
+            margin-right: 17px;
+        }
+
+        #logo{
+            width: 300px;
+            height: auto;
+        }
+
+
+        input.radio {width: auto;}
+
+
+        #serverSelectorContainer {
+            font-family: Arial, sans-serif;
+        }
+
+        #serverSelectorContainer label {
+            display: inline-block;
+            padding: 5px 80px;
+            overflow: hidden;
+            margin-bottom: 6px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            cursor: pointer;
+            background-color: #f7f7f7;
+            transition: background-color 0.3s;
+        }
+
+        #serverSelectorContainer .radio:checked + label {
+            background-color: #e0e0e0;
+            border-color: #bbb;
+        }
+
+        #serverSelectorContainer .radio {
+            display: none;
+        }
+
+        #serverSelectorContainer .radio:checked + label:after {
+            content: '✔';
+            display: inline-block;
+            margin-left: 5px;
+            color: #333;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+<div id="login-container">
+    <img id="logo" src="https://d7umqicpi7263.cloudfront.net/img/product/a4442471-1de2-4a60-ba9c-dc66980cbb2e/1f10eb5a-e2a1-415b-a470-de36c77a27bc.png" alt="Logo" id="logo" />
+    <h1>IntelliJ Highlight SCA Plugin</h1>
+    <h2>Server</h2>
+
+
+    <div id="customeUrlcontainer">
+        <label for="custom-url">Custom Server URL:</label>
+        <div id="InputContainerCustomURL">
+            <input type="text" id="custom-url" placeholder="Enter custom URL">
+        </div>
+    </div>
+
+
+    <div id="serverSelectorContainer">
+
+        <input class="radio" type="radio" id="rpa" name="server" value="https://rpa.casthighlight.com/">
+        <label for="rpa">https://rpa.casthighlight.com</label><br>
+
+        <input class="radio" type="radio" id="cloud" name="server" value="https://cloud.casthighlight.com/">
+        <label for="cloud">https://cloud.casthighlight.com</label><br>
+
+        <input class="radio" type="radio" id="app" name="server" value="https://app.casthighlight.com/">
+        <label for="app">https://app.casthighlight.com</label><br>
+
+        <input class="radio" type="radio" id="demo" name="server" value="https://demo.casthighlight.com/">
+        <label for="demo">https://demo.casthighlight.com</label><br>
+
+    </div>
+
+
+    <button id="toggle-server-button">Servers</button>
+    <br>
+
+
+    <div id="id-password-section">
+        <h3>Using ID and Password</h3>
+        <div id="InputContainerID">
+            <input type="text" id="login" placeholder="Enter your login">
+            <input type="password" id="password" placeholder="Enter your password">
+        </div>
+    </div>
+
+    <div id="token-section">
+        <h3>Using Token</h3>
+        <div id="InputContainerToken">
+            <input type="text" id="token" placeholder="Enter your token">
+        </div>
+
+    </div>
+
+    <button id="toggle-button">Token</button>
+
+    <br><br><br><br>
+    <button id="submit">Login</button>
+
+    <br><br>
+
+
+
+    <div id="note">
+        <h3>⚠ Note</h3>
+        <p>Use of this extension requires an active subscription for CAST Highlight and it can only be used on source code of applications already being analyzed within CAST Highlight.</p>
+    </div>
+
+    <a href="https://www.castsoftware.com/privacy" target="_blank">Privacy Policy</a>
+
+
+
+</div>
+<script type="text/javascript">
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key >= '0' && event.key <= '9' && event.location === 3) {
+            // Si c'est une touche de pavé numérique
+            var inputElement = document.activeElement;
+            if (inputElement && inputElement.tagName.toLowerCase() === 'input' && inputElement.type === 'password') {
+                inputElement.value += event.key;
+                event.preventDefault();
+            }
+        }
+    });
+
+    function getSelectedServerValue() {
+        var radios = document.querySelectorAll('#serverSelectorContainer .radio');
+
+        for (var i = 0; i < radios.length; i++) {
+            if (radios[i].checked) {
+                return radios[i].value;
+            }
+        }
+
+        return null; // Aucun bouton radio n'a été sélectionné
+    }
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const serverSelect = document.getElementById('serverSelectorContainer');
+        const customUrlContainer = document.getElementById('customeUrlcontainer');
+
+        // Not displaying server selector first
+        serverSelect.style.display = 'none';
+
+        // Ajoute un écouteur d'événements "change" pour afficher ou masquer le conteneur d'URL personnalisé
+        customUrlContainer.addEventListener('change', () => {
+            if (customUrlContainer.value === '') {
+                serverSelect.style.display = 'block';
+            } else {
+                serverSelect.style.display = 'none';
+            }
+        });
+    });
+
+
+    document.getElementById('toggle-button').addEventListener('click', () => {
+        const idPasswordSection = document.getElementById('id-password-section');
+        const tokenSection = document.getElementById('token-section');
+        const togglebutton = document.getElementById('toggle-button');
+
+        if (idPasswordSection.style.display === 'none') {
+            idPasswordSection.style.display = 'block';
+            tokenSection.style.display = 'none';
+            togglebutton.textContent = "Token";
+        } else {
+            idPasswordSection.style.display = 'none';
+            tokenSection.style.display = 'block';
+            togglebutton.textContent = "ID and Password";
+        }
+    });
+
+    document.getElementById('toggle-server-button').addEventListener('click', () => {
+
+        const customSection = document.getElementById('customeUrlcontainer');
+        const radioServerSection = document.getElementById('serverSelectorContainer');
+        const toggleServerbutton = document.getElementById('toggle-server-button');
+
+        if (customSection.style.display === 'none') {
+            customSection.style.display = 'block';
+            radioServerSection.style.display = 'none';
+            toggleServerbutton.textContent = "Servers";
+        } else {
+            customSection.style.display = 'none';
+            radioServerSection.style.display = 'block';
+            toggleServerbutton.textContent = "Custom URL";
+        }
+    });
+
+    /* Send credentials through webSocket Server */
+    let socket = new WebSocket('ws://localhost:8080');
+
+    socket.onopen = function(event) {
+        console.log('Connected to WebSocket.');
+    };
+
+    document.getElementById('submit').addEventListener('click', () => {
+
+        if(socket.readyState !== WebSocket.OPEN || socket.readyState === WebSocket.CLOSED) {
+            socket = new WebSocket('ws://localhost:8080');
+        }
+
+        const serverSelect = getSelectedServerValue();
+        const customUrl = document.getElementById('custom-url');
+        const login = document.getElementById('login');
+        const password = document.getElementById('password');
+        const token = document.getElementById('token');
+
+        const apiUrl = customUrl.value || serverSelect;
+        const credentials = {
+            type: 'login',
+            login: login.value,
+            password: password.value,
+            token: token.value,
+            url: apiUrl
+        };
+
+        const credentialsJSON = JSON.stringify(credentials);
+
+        if(socket.readyState === WebSocket.CONNECTING) {
+            sleep(1500);
+        }
+
+        socket.send(credentialsJSON);
+
+    });
+
+    function sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+
+
+
+</script>
+
+</body>
+</html>
+
+

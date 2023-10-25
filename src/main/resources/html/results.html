@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		
+		<title>CAST HIGHLIGHT Analyze results </title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="button.css">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+		<script src="canvasjs.min.js"></script>
+		<script src="bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700,800" type="text/css">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+		
+		<!-- Loading specific theme CSS -->
+		<link href="${stylePath}" rel="stylesheet">
+		<style>
+
+			body div {
+				color: white !important;
+			}
+
+			body{
+				background-color: #2d2d2d !important;
+			}
+
+			#mainContentColor{
+				color: #2d2d2d !important;
+				background-color: #2d2d2d !important;
+			}
+
+
+
+			input {
+				font-size:16px;
+				padding:5px;
+			}
+
+			.badgeVulneraCount {	
+				animation: drop-in 1000ms;
+				animation-iteration-count: 1;
+				animation-fill-mode: forwards;
+			}
+
+
+			@keyframes drop-in {
+				from {
+				transform:
+					rotate(0deg) translateY(-70%);
+				opacity: 0;
+				}
+				to {
+				transform:
+					rotate(0deg) translateY(0%);
+				opacity: 1;
+				}
+			}
+
+			/* ################ Vulnerability Table Style ############################ */
+
+			table.VulnerabilityTable {
+				border-collapse: collapse;
+				width: 80%;
+				margin-left: 1%;
+				overflow: hidden;
+			}
+			
+			th, td {
+				border: 1px solid rgb(186, 186, 186);
+				padding: 6px;
+				text-align: center;
+				align-content: center;
+			}
+			
+			th {
+				background-color: #232629;
+				color: white;
+				font-weight: bold;
+				text-align: center;
+				align-content: center;
+			}
+			
+			tr:nth-child(even) {
+				background-color: #2f2f2f;
+			}
+
+			 /*
+			th.thCritical{
+				background-color: #232629;
+			}
+			th.thHigh{
+				background-color: #dc3545;
+			}
+			th.thMedium{
+				background-color: #ffc107;
+			}
+			th.thLow{
+				background-color: #f8f9fa;
+			}
+			th.thUnknow{
+				background-color: #ffffff;
+			}
+			*/
+
+		</style>
+			
+			
+		
+	</head>
+	<body>
+		<div id="mainContentColor" style=" position:fixed; overflow-y: auto; width:100%; bottom:0px; top:0px; left:0px; right:0px">
+			<div style="padding:12px" id="hlinfo">
+
+
+		
+
+				<div id="dashbordVulnerabilityCount" style="padding:12px"></div>
+				<hr>
+				<div id="allComponents" style="padding:12px"></div>
+				
+				
+			</div>
+		</div>
+	</body>
+</html>

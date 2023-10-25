@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Settings Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <style>
+
+    .body{
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: darkslategrey ! important;
+        color: white ! important;
+    }
+
+    .body > * {
+        background-color: darkslategrey ! important;
+        color: white ! important;
+    }
+
+    button {
+      background-color: #0078d4;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 3px;
+      cursor: pointer;
+      }
+
+      #submit{
+          margin-left: 40px;
+      }
+
+      button:hover {
+          background-color: #005a9e;
+      }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 20px;
+        background: darkslategrey;
+        color: white;
+      }
+      
+      .description {
+        margin: 20px;
+      }
+
+      .main {
+        margin: 20px;
+      }
+      
+      .theme-mode {
+        margin: 20px;
+      }
+      
+      .theme-mode input[type=radio] {
+        margin-right: 10px;
+      }
+      
+      .privacy-statement {
+        margin: 20px;
+      }
+      
+      a {
+        color: light-blue;
+        text-decoration: none;
+      }
+
+      p {
+          color:white;
+          background-color: darkslategrey;
+      }
+
+      h2 {
+          color:white;
+          background-color: darkslategrey;
+      }
+      
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+
+</head>
+<body>
+      <div class="header">
+      <h1>Settings</h1>
+      <h2>Version 1.2</h2>
+      </div>
+  
+      <div class="description">
+          <h2>Description</h2>
+          <p>Highlight extension for visual studio code: Allow the user to get vulenrability informations about its installed dependency.</p>
+
+          <p>
+              
+              <h2>Features</h2>  
+
+
+              • Connection to Highlight API <br>
+              • Retrieving dependency from pom.xml and package.json files <br>
+              • Displaying each dependency vulnerability list for the current version <br>
+              • Displaying global counter of vulneraibility for the whole dependency<br>
+
+              
+              <h2>Requirements</h2>
+              
+              You need to have an Highlight account to get connected to this extension (API connection required)<br>
+          </p>
+
+      </div>
+
+
+  </body>
+    <footer>
+
+    </footer>
+
+   
+</html>

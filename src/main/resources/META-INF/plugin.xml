@@ -1,0 +1,42 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>com.casthighlightsca.extension</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>Cast Highlight Sca</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="support@casthighlight.com" url="https://www.castsoftware.com/">CAST</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description>Introducing the Cast SCA IntelliJ Plugin – your premier choice for fortifying code security within the IntelliJ platform. This advanced plugin meticulously scans your project's JSON and POM dependencies, identifying and flagging potential vulnerabilities with precision. Protect your applications from unseen threats and ensure code integrity with Cast SCA. As development landscapes evolve, stay one step ahead of security breaches.</description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+
+
+
+
+
+    <!-- ################ Extension LIST ################### -->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="Highlight SCA" anchor="right" icon="/icons/pluginIcon.svg" factoryClass="com.casthighlightsca.extension.entrypoint.extensionLauncher"/>
+    </extensions>
+
+
+    <!-- ################ ACTION LIST ################### -->
+
+
+
+</idea-plugin>
+
+
